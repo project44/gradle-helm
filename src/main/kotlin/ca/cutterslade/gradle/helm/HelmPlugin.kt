@@ -358,8 +358,7 @@ open class InitializeTask : HelmExecTask() {
   override fun helmArgs() = listOf(CommandLineArgumentProvider {
     listOf(
         "init",
-        "--client-only",
-        "--stable-repo-url https://charts.helm.sh/stable" 
+        "--client-only"
     )
   })
 }
