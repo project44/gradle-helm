@@ -85,30 +85,30 @@ artifactory {
     })
 }
 
-/*gradlePlugin {*/
-  /*plugins {*/
-    /*create("helm") {*/
-      /*id = "ca.cutterslade.helm"*/
-      /*implementationClass = "ca.cutterslade.gradle.helm.HelmPlugin"*/
-    /*}*/
-  /*}*/
-  /*testSourceSets(sourceSets["functionalTest"])*/
-/*}*/
+gradlePlugin {
+  plugins {
+    create("helm") {
+      id = "ca.cutterslade.helm"
+      implementationClass = "ca.cutterslade.gradle.helm.HelmPlugin"
+    }
+  }
+  testSourceSets(sourceSets["functionalTest"])
+}
 
-/*pluginBundle {*/
-  /*website = "https://github.com/wfhartford/gradle-helm"*/
-  /*vcsUrl = "https://github.com/wfhartford/gradle-helm.git"*/
-  /*tags = listOf("helm")*/
-  /*description = "Plugin supporting basic helm commands for a gradle build."*/
+pluginBundle {
+  website = "https://github.com/wfhartford/gradle-helm"
+  vcsUrl = "https://github.com/wfhartford/gradle-helm.git"
+  tags = listOf("helm")
+  description = "Plugin supporting basic helm commands for a gradle build."
 
-  /*(plugins) {*/
-    /*"helm" {*/
-      /*id = "ca.cutterslade.helm"*/
-      /*displayName = "Gradle Helm Plugin"*/
-      /*version = project.version.toString().replace("-SNAPSHOT", "-${DateTimeFormatter.ofPattern("uuuuMMddHHmmss").format(LocalDateTime.now())}")*/
-    /*}*/
-  /*}*/
-/*}*/
+  (plugins) {
+    "helm" {
+      id = "ca.cutterslade.helm"
+      displayName = "Gradle Helm Plugin"
+      version = project.version.toString().replace("-SNAPSHOT", "-${DateTimeFormatter.ofPattern("uuuuMMddHHmmss").format(LocalDateTime.now())}")
+    }
+  }
+}
 
 /*tasks["publishPlugins"].dependsOn(tasks["check"])*/
 
