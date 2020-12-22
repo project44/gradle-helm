@@ -203,7 +203,7 @@ open class HelmChart(val name: String, private val project: Project, private val
 
 @Suppress("MemberVisibilityCanBePrivate")
 open class HelmInstallation @Inject constructor(private val project: Project) {
-  var version: String by DefaultingDelegate { "v2.8.2" }
+  var version: String by DefaultingDelegate { "v2.17.0" }
   var os: OperatingSystem by DefaultingDelegate { OperatingSystem.detect() }
   var helmFilename: String by DefaultingDelegate { os.filename(this) }
   var url: String by DefaultingDelegate { os.url(this) }
@@ -223,7 +223,7 @@ open class HelmLint @Inject constructor() {
 
 open class BaseRepo @Inject constructor() {
   var type by DefaultingDelegate { "helm" }
-  var url by DefaultingDelegate { "https://kubernetes-charts.storage.googleapis.com/" }
+  var url by DefaultingDelegate { "https://charts.helm.sh/stable" }
   val implementation by lazy { RepoImplementation(type) }
   var username: String? = null
   var password: String? = null
@@ -358,7 +358,8 @@ open class InitializeTask : HelmExecTask() {
   override fun helmArgs() = listOf(CommandLineArgumentProvider {
     listOf(
         "init",
-        "--client-only"
+        "--client-only",
+        "--stable-repo-url https://charts.helm.sh/stable"
     )
   })
 }
